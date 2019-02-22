@@ -37,3 +37,20 @@ In terminal 2 :
 roslaunch jackal_viz view_robot.launch
 ```
 and follow the [tutorial](http://docs.ros.org/indigo/api/jackal_tutorials/html/simulation.html)
+
+
+### If there are problems with  "DefaultRobotHWSim"
+Edit the file: jackal/jackal_description/urdf/jackal.gazebo
+add the following within <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"> ... </plugin>
+
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
+
+so finally it looks like:
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+  </gazebo>
