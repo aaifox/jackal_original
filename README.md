@@ -64,3 +64,16 @@ so finally it looks like:
     </plugin>
   </gazebo>
 ```
+
+### currrently melodic do not support packages:
+```
+lms1xx
+gmapping
+pointgrey-camera-description
+```
+
+comment out lines in file: *`jackal/jackal_description/urdf/accessories.urdf.xacro`*
+```
+lms1xx: line 19-31
+pointgrey-camera-description: line 49, 61-68, 84-100, 105
+```
