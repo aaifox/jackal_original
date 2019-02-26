@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<robot name="jackal" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- This file is a placeholder which is included by default from
+       jackal.urdf.xacro. If a robot is being customized and requires
+       additional URDF, set the JACKAL_URDF_EXTRAS environment variable
+       to the full path of the file you would like included. -->
+  
+  <xacro:property name="asm_l" value="0.532" />
+  <xacro:property name="asm_w" value="0.416" />
+  <xacro:property name="asm_h" value="0.308" />
+  
+   <joint name="chassis_arm_joint" type="fixed">
+      <parent link="chassis_link"/>
+      <child link="asm_link" />
+      <axis xyz="0 0 1" />
+   </joint>
+
+  <link name="asm_link">
+    <visual>
+      <origin xyz="0.01 0.0 ${chassis_height}" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://jackal_description/meshes/full_asm.stl"/>
+      </geometry>
+      <material name="dark_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 ${asm_h/2}"/>
+      <geometry>
+        <box size="${asm_l} ${asm_w} ${asm_h}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <!-- Center of mass -->
+      <origin xyz="${asm_l} ${asm_w} ${asm_h}" rpy="0 0 0"/>
+      <mass value="2.0"/>
+      <!-- Moments of inertia: -->
+      <inertia
+        ixx="0.0" ixy="-0.0000" ixz="0.00"
+        iyy="0.0" iyz="-0.0000" izz="0.0"/>
+      </inertial>
+  </link>
+
+  <!-- front laser-->
+  <xacro:include filename="$(find jackal_description)/urdf/accessories/sick_lms1xx_mount.urdf.xacro" />
+  <sick_lms1xx_mount prefix="$(optenv JACKAL_LASER_MOUNT front)"
+                     topic="$(optenv JACKAL_LASER_TOPIC front/scan)"/>
+
+  <joint name="$(optenv JACKAL_LASER_MOUNT front)_laser_mount_joint" type="fixed">
+    <origin xyz="$(optenv JACKAL_LASER_OFFSET 0 0 ${asm_h-0.01})"
+            rpy="$(optenv JACKAL_LASER_RPY 0 0 0)" />
+    <parent link="$(optenv JACKAL_LASER_MOUNT front)_mount" />
+    <child link="$(optenv JACKAL_LASER_MOUNT front)_laser_mount" />
+  </joint>
+
+</robot>
