@@ -24,7 +24,7 @@
       <material name="dark_grey" />
     </visual>
     <collision>
-      <origin xyz="0 0 ${asm_h/2}"/>
+      <origin xyz="-0.03 0 ${asm_h/2+chassis_height}"/>
       <geometry>
         <box size="${asm_l} ${asm_w} ${asm_h}"/>
       </geometry>
