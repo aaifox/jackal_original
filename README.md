@@ -6,7 +6,7 @@ sudo apt-get install ros-kinetic-robot-localization ros-kinetic-controller-manag
 ```
 for *ros-melodic*
 ```
-sudo apt-get install ros-melodic-robot-localization ros-melodic-controller-manager ros-melodic-joint-state-controller ros-melodic-diff-drive-controller ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control ros-melodic-gazebo-plugins ros-melodic-roslint ros-melodic-amcl ros-melodic-map-server ros-melodic-move-base ros-melodic-urdf ros-melodic-xacro ros-melodic-message-runtime ros-melodic-topic-tools ros-melodic-teleop-twist-joy ros-melodic-twist-mux ros-melodic-ros-control
+sudo apt-get install ros-melodic-robot-localization ros-melodic-controller-manager ros-melodic-joint-state-controller ros-melodic-diff-drive-controller ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control ros-melodic-gazebo-plugins ros-melodic-roslint ros-melodic-amcl ros-melodic-map-server ros-melodic-move-base ros-melodic-urdf ros-melodic-xacro ros-melodic-message-runtime ros-melodic-topic-tools ros-melodic-teleop-twist-joy ros-melodic-twist-mux ros-melodic-ros-control ros-melodic-joint-state-controller-dbgsym
 ```
 ### currrently melodic do not support packages:
 ```
