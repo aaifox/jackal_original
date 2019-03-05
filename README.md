@@ -4,8 +4,23 @@ This is *manual* way to install necessary packages :
 ```
 sudo apt-get install ros-kinetic-robot-localization ros-kinetic-controller-manager ros-kinetic-joint-state-controller ros-kinetic-diff-drive-controller ros-kinetic-gazebo-ros ros-kinetic-gazebo-ros-control ros-kinetic-gazebo-plugins             ros-kinetic-lms1xx ros-kinetic-pointgrey-camera-description ros-kinetic-roslint ros-kinetic-amcl ros-kinetic-gmapping      ros-kinetic-map-server ros-kinetic-move-base ros-kinetic-urdf ros-kinetic-xacro ros-kinetic-message-runtime ros-kinetic-topic-tools ros-kinetic-teleop-twist-joy
 ```
-If you want to use `rosdep` and install all dependencies (for example for doc generation etc), the skip this step.
+for *ros-melodic*
+```
+sudo apt-get install ros-melodic-robot-localization ros-melodic-controller-manager ros-melodic-joint-state-controller ros-melodic-diff-drive-controller ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control ros-melodic-gazebo-plugins ros-melodic-roslint ros-melodic-amcl ros-melodic-map-server ros-melodic-move-base ros-melodic-urdf ros-melodic-xacro ros-melodic-message-runtime ros-melodic-topic-tools ros-melodic-teleop-twist-joy
+```
+### currrently melodic do not support packages:
+```
+lms1xx
+gmapping
+pointgrey-camera-description
+```
 
+comment out lines in file: *`jackal/jackal_description/urdf/accessories.urdf.xacro`*
+```
+lms1xx: line 19-31
+pointgrey-camera-description: line 49, 61-68, 84-100, 105
+```
+If you want to use `rosdep` and install all dependencies (for example for doc generation etc), the skip this step.
 
 ### Create a workspace and clone sources
 ```
@@ -63,17 +78,4 @@ so finally it looks like:
       <legacyModeNS>true</legacyModeNS>
     </plugin>
   </gazebo>
-```
-
-### currrently melodic do not support packages:
-```
-lms1xx
-gmapping
-pointgrey-camera-description
-```
-
-comment out lines in file: *`jackal/jackal_description/urdf/accessories.urdf.xacro`*
-```
-lms1xx: line 19-31
-pointgrey-camera-description: line 49, 61-68, 84-100, 105
 ```
