@@ -6,7 +6,7 @@ sudo apt-get install ros-kinetic-robot-localization ros-kinetic-controller-manag
 ```
 for *ros-melodic*
 ```
-sudo apt-get install ros-melodic-robot-localization ros-melodic-controller-manager ros-melodic-joint-state-controller ros-melodic-diff-drive-controller ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control ros-melodic-gazebo-plugins ros-melodic-roslint ros-melodic-amcl ros-melodic-map-server ros-melodic-move-base ros-melodic-urdf ros-melodic-xacro ros-melodic-message-runtime ros-melodic-topic-tools ros-melodic-teleop-twist-joy
+sudo apt-get install ros-melodic-robot-localization ros-melodic-controller-manager ros-melodic-joint-state-controller ros-melodic-diff-drive-controller ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control ros-melodic-gazebo-plugins ros-melodic-roslint ros-melodic-amcl ros-melodic-map-server ros-melodic-move-base ros-melodic-urdf ros-melodic-xacro ros-melodic-message-runtime ros-melodic-topic-tools ros-melodic-teleop-twist-joy ros-melodic-twist-mux ros-melodic-ros-control
 ```
 ### currrently melodic do not support packages:
 ```
@@ -18,7 +18,7 @@ pointgrey-camera-description
 comment out lines in file: *`jackal/jackal_description/urdf/accessories.urdf.xacro`*
 ```
 lms1xx: line 19-31
-pointgrey-camera-description: line 49, 61-68, 84-100, 105
+pointgrey-camera-description: line 49, 104
 ```
 If you want to use `rosdep` and install all dependencies (for example for doc generation etc), the skip this step.
 
