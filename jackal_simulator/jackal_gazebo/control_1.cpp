@@ -5,7 +5,7 @@
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "control_1");
-    ros::Nodehandle CN;
+    ros::NodeHandle CN;
     ros::Publisher control_pub = CN.advertise<geometry_msgs::Twist>("twist_marker_server/cmd_vel", 1);
 //    ros::Publisher control_pub = CN.advertise<geometry_msgs::Twist>("jackal_velocity_controller/cmd_vel", 1);
     ros::Rate loop_rate(5);
