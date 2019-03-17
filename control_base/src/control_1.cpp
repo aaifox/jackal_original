@@ -2,7 +2,7 @@
 //#include "std_msgs/String.h"
 #include "geometry_msgs/Twist.h"
 
-int main(int argc, char **argv)
+/* int main(int argc, char **argv)
 {
     ros::init(argc, argv, "control_1");
     ros::NodeHandle CN;
@@ -31,4 +31,43 @@ int main(int argc, char **argv)
     }
 
     return 0;
+} */
+
+class BaseDriver
+{
+private:
+    ros::NodeHandle CN;
+    ros::Publisher control_pub;
+public:
+    //node intialization
+    BaseDriver(ros::NodeHandle &nh)
+    {
+        CN = nh;
+        control_pub = CN.advertise<geometry_msgs::Twist>("twist_marker_server/cmd_vel",1);
+    }
+    bool Control_pub()
+    {
+        geometry_msgs::Twist base_cmd;
+        base_cmd.linear.x = 0;
+        base_cmd.linear.y = 0;
+        base_cmd.angular.z = 0;
+        while( ros::ok() )
+        {
+            base_cmd.linear.x = base_cmd.linear.x + 0.01;
+            base_cmd.linear.y = 0;
+            base_cmd.angular.z = base_cmd.angular.z + 0.01;
+            ROS_INFO("velocity (x,y,w): %f, %f, %f", base_cmd.linear.x, base_cmd.linear.y, base_cmd.angular.z);
+            
+            control_pub.publish(base_cmd);
+        }
+        return true;
+    }
+};
+
+int main(int argc,char **argv)
+{
+    ros::init(argc,argv,"control_1");
+    ros::NodeHandle nh;
+    BaseDriver rob_driver(nh);
+    rob_driver.Control_pub();
 }
